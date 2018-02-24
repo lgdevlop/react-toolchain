@@ -14,6 +14,9 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin('app.css')
     ],
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+    },
     module: {
         loaders: [{
             test: /\.(js|jsx)$/,
