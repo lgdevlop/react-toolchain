@@ -1,20 +1,29 @@
-const path = require('path')
+const path = require("path");
 
 module.exports = {
   entry: {
-    bundle: './src/index.jsx'
+    bundle: "./src/index.jsx"
   },
-  mode: 'development',
+  mode: "development",
   output: {
-    filename: './js/[name].js',
-    path: path.resolve(__dirname, '../dist'),
-    publicPath: '/'
+    filename: "./js/[name].js",
+    path: path.resolve(__dirname, "../dist"),
+    publicPath: "/"
   },
   devServer: {
     historyApiFallback: true,
     port: 8080,
-    contentBase: 'dist',
-    overlay: true
+    contentBase: "dist",
+    overlay: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers":
+        "X-Requested-With, content-type, Authorization"
+    }
+  },
+  resolve: {
+    extensions: [".js", ".jsx", ".json"]
   },
   module: {
     rules: [
@@ -22,20 +31,34 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: "babel-loader"
           // options: {
           //   presets: ['react']
           // }
         }
       },
+      // {
+      //   test: /\.css$/,
+      //   use: [
+      //     {
+      //       loader: "style-loader"
+      //     },
+      //     {
+      //       loader: "css-loader"
+      //     }
+      //   ]
+      // },
       {
-        test: /\.css$/,
+        test: /\.s?[ac]ss$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: "style-loader"
           },
           {
-            loader: 'css-loader'
+            loader: "css-loader"
+          },
+          {
+            loader: "sass-loader"
           }
         ]
       },
@@ -43,18 +66,18 @@ module.exports = {
         test: /\.html$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              name: 'index.html'
+              name: "index.html"
             }
           },
           {
-            loader: 'extract-loader'
+            loader: "extract-loader"
           },
           {
-            loader: 'html-loader',
+            loader: "html-loader",
             options: {
-              attrs: ['img:src']
+              attrs: ["img:src"]
             }
           }
         ]
@@ -63,9 +86,9 @@ module.exports = {
         test: /\.(jpg|gif|png|svg)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              name:'img/[name].[ext]'
+              name: "img/[name].[ext]"
             }
           }
         ]
@@ -74,15 +97,15 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              name:'[name].[ext]',
-              publicPath: '../fonts/',
-              outputPath: 'fonts/'
+              name: "[name].[ext]",
+              publicPath: "../fonts/",
+              outputPath: "fonts/"
             }
           }
         ]
       }
     ]
-  },
-}
+  }
+};
