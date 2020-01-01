@@ -1,31 +1,55 @@
 # Webpack React toolchain - Desenvolvimento React
 
-### Para inicializar
+- Para inicializar
+  - **NPM:**
 
-- **NPM:**
-  - `npm i`
-- **YARN:**
-  - `yarn`
+    ```bash
+    npm i
+    ```
 
-### Para rodar webpack dev server com hot reloading
+  - **YARN:**
 
-- **NPM:**
-  - `npm run dev`
-- **YARN:**
-  - `yarn dev`
+    ```bash
+    yarn
+    ```
 
-### Para buildar
+- Para rodar webpack dev server com hot reloading
+  - **NPM:**
 
-- **NPM:**
-  - `npm run build`
-- **YARN:**
-  - `yarn build`
+    ```bash
+    npm run dev
+    ```
 
-### Para subir servidor express para servir o conteudo buildado
+  - **YARN:**
 
-- **NPM:**
-  - `npm run server`
-- **YARN:**
-  - `yarn server`
+    ```bash
+    yarn dev
+    ```
+
+- Para buildar
+  - **NPM:**
+
+    ```bash
+    npm run build
+    ```
+
+  - **YARN:**
+
+    ```bash
+    yarn build
+    ```
+
+- Para subir servidor express para servir o conteudo buildado
+  - **NPM:**
+
+    ```bash
+    npm run server
+    ```
+
+  - **YARN:**
+
+    ```bash
+    yarn server
+    ```
 
 **Contém um boilerplate na pasta src**
