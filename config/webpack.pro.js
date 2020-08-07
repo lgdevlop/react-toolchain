@@ -50,7 +50,7 @@ module.exports = {
       //   })
       // },
       {
-        test: /\.s?[ac]ss$/,
+        test: /\.css$/,
         // use: ExtractTextPlugin.extract({
         // use: MiniCssExtractPlugin.loader({
         // fallback: "style-loader",
@@ -58,9 +58,6 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           {
             loader: "css-loader"
-          },
-          {
-            loader: "sass-loader"
           }
         ]
         // })
