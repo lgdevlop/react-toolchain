@@ -136,18 +136,18 @@ module.exports = {
           // },
         }
         // sourceMap: true
+      }),
+      new OptimizeCssAssetsPlugin({
+        assetNameRegExp: /\.css$/g,
+        cssProcessor: require("cssnano"),
+        cssProcessorOptions: { safe: true, discardComments: { removeAll: true } },
+        canPrint: true
       })
     ]
   },
   plugins: [
     // new ExtractTextPlugin({ filename: "./css/style.css" }),
-    new MiniCssExtractPlugin({ filename: "./css/style.css" }),
-    new OptimizeCssAssetsPlugin({
-      assetNameRegExp: /\.css$/g,
-      cssProcessor: require("cssnano"),
-      cssProcessorOptions: { safe: true, discardComments: { removeAll: true } },
-      canPrint: true
-    })
+    new MiniCssExtractPlugin({ filename: "./css/style.css" })
     // new HtmlWebpackPlugin({
     //   inject: false,
     //   hash: true,
