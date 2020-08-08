@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const HtmlWebpackPlugin = require('html-webpack-plugin')
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -109,33 +110,50 @@ module.exports = {
     ]
   },
   optimization: {
+    minimize: true,
     minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        // sourceMap: true, // Só funciona com a flag devtool do webpack setada tambem
-        uglifyOptions: {
-          compress: false, // Diminui um pouco o tamanho do bundle
-          ecma: 6,
-          mangle: false
-          // sourceMap: {
-          //   filename: "out.js",
-          //   url: "out.js.map"
-          // }
-          // mangle: {
-          //   // mangle options
-          //   eval: false,
-          //   keep_classnames: false,
-          //   keep_fnames: false,
-          //   reserved: [],
-          //   toplevel: false,
-          //   safari10: false,
-          //   // properties: {
-          //   //     // mangle property options
-          //   // }
-          // },
-        }
-        // sourceMap: true
+      // new UglifyJsPlugin({
+      //   cache: true,
+      //   parallel: true,
+      //   // sourceMap: true, // Só funciona com a flag devtool do webpack setada tambem
+      //   uglifyOptions: {
+      //     compress: false, // Diminui um pouco o tamanho do bundle
+      //     ecma: 6,
+      //     mangle: false
+      //     // sourceMap: {
+      //     //   filename: "out.js",
+      //     //   url: "out.js.map"
+      //     // }
+      //     // mangle: {
+      //     //   // mangle options
+      //     //   eval: false,
+      //     //   keep_classnames: false,
+      //     //   keep_fnames: false,
+      //     //   reserved: [],
+      //     //   toplevel: false,
+      //     //   safari10: false,
+      //     //   // properties: {
+      //     //   //     // mangle property options
+      //     //   // }
+      //     // },
+      //   }
+      //   // sourceMap: true
+      // }),
+      new TerserPlugin({
+        terserOptions: {
+          ecma: 2015,
+          parse: {},
+          compress: {},
+          mangle: false, // Note `mangle.properties` is `false` by default.
+          module: false,
+          output: null,
+          toplevel: false,
+          nameCache: null,
+          ie8: false,
+          keep_classnames: undefined,
+          keep_fnames: false,
+          safari10: false,
+        },
       }),
       new OptimizeCssAssetsPlugin({
         assetNameRegExp: /\.css$/g,
