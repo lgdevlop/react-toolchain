@@ -1,5 +1,4 @@
 var path = require("path");
-// const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const HtmlWebpackPlugin = require('html-webpack-plugin')
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
@@ -32,9 +31,6 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
-          options: {
-            presets: ["react"]
-          }
         }
       },
       // {
